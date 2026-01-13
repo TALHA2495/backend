@@ -1,39 +1,58 @@
-import React from 'react';
+import React from 'react';  
 
 import { Link } from 'react-router-dom';
+import logo from '../assets/Layout/Brand/logo-colored.png'
+import { Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react';
 
 const Footer = () => {
     return (
-        <footer className="bg-white pt-16 pb-8 border-t border-gray-200">
+        <footer className="hidden lg:block bg-white pt-16 pb-8 border-t border-gray-200">
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-6 gap-8 mb-16">
+                <div className="grid-cols-1 grid  md:grid-cols-6 gap-8 md:gap:2 llg:mb-16">
                     <div className="md:col-span-2">
-                        <Link to="/" className="flex items-center gap-2 mb-4">
-                            <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                                B
-                            </div>
-                            <span className="text-2xl font-bold text-gray-800">Brand</span>
-                        </Link>
+                        <Link to="/" className="flex items-center bg-white">
+                                    <img src={logo} alt="Brand" className="h-[46px] block " />
+                                </Link>
                         <p className="text-gray-600 mb-6 leading-relaxed">
                             Best information about the company gies here but now lorem ipsum is
                         </p>
-                        <div className="flex items-center gap-2">
-                            <a href="#" className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 hover:bg-blue-600 hover:text-white transition-colors">
-                                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                            </a>
-                            <a href="#" className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 hover:bg-blue-600 hover:text-white transition-colors">
-                                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
-                            </a>
-                            <a href="#" className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 hover:bg-blue-600 hover:text-white transition-colors">
-                                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                            </a>
-                            <a href="#" className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 hover:bg-blue-600 hover:text-white transition-colors">
-                                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                            </a>
-                            <a href="#" className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 hover:bg-blue-600 hover:text-white transition-colors">
-                                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33zM9.75 15.02l5.75-3.27-5.75-3.27v6.54z"></path></svg>
-                            </a>
-                        </div>
+                        <div className="flex items-center gap-3">
+  <a
+    href="#"
+    className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 hover:bg-blue-600 hover:text-white transition-colors"
+  >
+    <Facebook size={16} />
+  </a>
+
+  <a
+    href="#"
+    className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 hover:bg-blue-600 hover:text-white transition-colors"
+  >
+    <Twitter size={16} />
+  </a>
+
+  <a
+    href="#"
+    className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 hover:bg-blue-600 hover:text-white transition-colors"
+  >
+    <Linkedin size={16} />
+  </a>
+
+  <a
+    href="#"
+    className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 hover:bg-blue-600 hover:text-white transition-colors"
+  >
+    <Instagram size={16} />
+  </a>
+
+  <a
+    href="#"
+    className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 hover:bg-blue-600 hover:text-white transition-colors"
+  >
+    <Youtube size={16} />
+  </a>
+</div>
+
                     </div>
 
                     <div>
@@ -69,7 +88,7 @@ const Footer = () => {
                     </div>
 
                     <div>
-                        <h3 className="font-medium text-black mb-4">Get app</h3>
+                        <h3 className="font-medium text-black mb-4 hidden lg:block">Get app</h3>
                          <div className="space-y-2">
                             <button className="flex items-center bg-black text-white px-3 py-2 rounded-md w-full max-w-[160px]">
                                 <div className="mr-2">
@@ -95,7 +114,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-             <div className="bg-gray-100 py-6">
+             <div className="bg-gray-100 py-6 hidden lg:block">
                 <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
                     <p className="text-gray-500 text-sm">© 2023 Ecommerce.</p>
                      <div className="flex items-center gap-2 mt-4 md:mt-0">

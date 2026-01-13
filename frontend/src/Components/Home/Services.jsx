@@ -26,7 +26,7 @@ const Services = () => {
     ];
 
     return (
-         <div className="container mx-auto px-4 py-4">
+         <div className="hidden lg:block container mx-auto px-4 py-4">
              <h3 className="text-xl font-bold text-gray-900 mb-4">Our extra services</h3>
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                  {services.map((item, idx) => (

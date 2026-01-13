@@ -14,7 +14,6 @@ import DE from '../../assets/Layout1/Image/flags/DE@2x.png';
 const SuppliersRegion = () => {
     const countries = [
         { name: "Arabic Emirates", code: "AE", domain: "shopname.ae", flag: AE },
-        // Australia missing in assets
         { name: "United States", code: "US", domain: "shopname.ae", flag: US },
         { name: "Russia", code: "RU", domain: "shopname.ru", flag: RU },
         { name: "Italy", code: "IT", domain: "shopname.it", flag: IT },
@@ -26,7 +25,7 @@ const SuppliersRegion = () => {
     ];
 
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className="hidden lg:block container mx-auto px-4 py-8">
              <h3 className="text-xl font-bold text-gray-900 mb-6">Suppliers by region</h3>
              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-4 gap-x-4">
                  {countries.map((country, idx) => (
