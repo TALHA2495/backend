@@ -16,7 +16,7 @@ app.use(express.json());
 //auth
 app.use("/api/auth", authRoutes);
 //product
-app.use('/product',ProductRoutes);
+app.use('/product', ProductRoutes);
 
 app.get("/", (req, res) => {
   res.send("Product API is running");
@@ -26,6 +26,9 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 8000;
 
 
+
 app.listen(PORT, () => {
   console.log(`App is running on port${PORT}`);
 });
+
+export default app;
