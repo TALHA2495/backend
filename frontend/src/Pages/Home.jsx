@@ -48,18 +48,20 @@ const Home = () => {
     }
 
     return (
-        <div className="lg:bg-[#EFF2F4] bg-white md-pb-8">
+        <div className="lg:bg-[#EFF2F4] bg-white pb-8">
             <Hero />
             <Deals />
             <SectionGrid 
                title="Home and outdoor" 
                bgImage={homeBanner} 
                items={homeOutdoorItems} 
+               categoryLink="/category/home-interiors"
             />
             <SectionGrid 
                title="Consumer electronics" 
                bgImage={electronicsBanner} 
                items={electronicsItems} 
+               categoryLink="/category/computer-and-tech"
             />
             <InquiryForm />
             <Recommended />

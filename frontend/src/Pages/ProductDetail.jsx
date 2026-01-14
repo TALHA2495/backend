@@ -357,16 +357,16 @@ const ProductDetail = () => {
             <div className="space-y-4">
               {youMayLike.map((item, idx) => (
                 <div key={idx} className="flex gap-3">
-                  <div className="border border-gray-200 rounded w-[80px] h-[80px] flex items-center justify-center flex-shrink-0">
+                  <Link to={`/product/${item._id}`} className="border border-gray-200 rounded w-[80px] h-[80px] flex items-center justify-center flex-shrink-0">
                     <img
                       src={item.image}
                       alt={item.name}
                       className="max-h-full max-w-full object-contain"
                     />
-                  </div>
+                  </Link>
                   <div>
                     <Link
-                      to="#"
+                      to={`/product/${item._id}`}
                       className="text-gray-900 text-sm font-medium hover:text-blue-600 block mb-1 line-clamp-2"
                     >
                       {item.name}
@@ -384,7 +384,7 @@ const ProductDetail = () => {
           <h3 className="font-bold text-gray-900 mb-6">Related products</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {relatedProducts.map((item, idx) => (
-              <div key={idx} className="group cursor-pointer">
+              <Link key={idx} to={`/product/${item._id}`} className="group cursor-pointer">
                 <div className="bg-gray-100 rounded-md h-[140px] flex items-center justify-center mb-3">
                   <img
                     src={item.image}
@@ -396,9 +396,9 @@ const ProductDetail = () => {
                   <h4 className="text-gray-800 text-sm font-medium group-hover:text-blue-600 truncate">
                     {item.name}
                   </h4>
-                  <div className="text-gray-500 text-xs">{item.price}</div>
+                  <div className="text-gray-500 text-xs">${item.price}</div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { toast } from "react-toastify";
 import logo from '../assets/Layout/Brand/logo-colored.png';
 
-const Login = () => {
+const Register = () => {
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { register } = useAuth();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,8 +20,15 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validate passwords match
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords do not match!");
+      return;
+    }
+
     setLoading(true);
-    await login(formData.email, formData.password);
+    await register(formData.name, formData.email, formData.password);
     setLoading(false);
   };
 
@@ -35,11 +45,28 @@ const Login = () => {
           <div className="p-6 space-y-6 sm:p-8">
             {/* Title */}
             <h1 className="text-2xl font-bold text-gray-900">
-              Login to your account
+              Create an account
             </h1>
-
+           
             {/* Form */}
             <form className="space-y-5" onSubmit={handleSubmit}>
+              {/* Name */}
+              <div>
+                <label className="block mb-2 text-sm font-medium text-gray-700">
+                  Full name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Enter your full name"
+                  className="bg-white border border-gray-300 text-gray-900 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3 placeholder:text-gray-400 transition-colors"
+                  required
+                  disabled={loading}
+                />
+              </div>
+
               {/* Email */}
               <div>
                 <label className="block mb-2 text-sm font-medium text-gray-700">
@@ -67,14 +94,32 @@ const Login = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  placeholder="Enter your password"
+                  placeholder="Create a password"
+                  className="bg-white border border-gray-300 text-gray-900 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3 placeholder:text-gray-400 transition-colors"
+                  required
+                  disabled={loading}
+                />
+                <p className="mt-1 text-xs text-gray-500">Must be at least 8 characters</p>
+              </div>
+
+              {/* Confirm Password */}
+              <div>
+                <label className="block mb-2 text-sm font-medium text-gray-700">
+                  Confirm password
+                </label>
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  placeholder="Confirm your password"
                   className="bg-white border border-gray-300 text-gray-900 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-3 placeholder:text-gray-400 transition-colors"
                   required
                   disabled={loading}
                 />
               </div>
 
-              
+             
 
               {/* Button */}
               <button
@@ -88,25 +133,23 @@ const Login = () => {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Signing in...
+                    Creating account...
                   </span>
                 ) : (
-                  'Sign in'
+                  'Create account'
                 )}
               </button>
 
               
 
-              
-
               {/* Footer */}
               <p className="text-sm text-center text-gray-600">
-                Don't have an account?{" "}
+                Already have an account?{" "}
                 <Link
-                  to={"/register"}
+                  to={"/login"}
                   className="font-semibold text-blue-600 hover:text-blue-700"
                 >
-                  Sign up for free
+                  Sign in
                 </Link>
               </p>
             </form>
@@ -125,4 +168,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

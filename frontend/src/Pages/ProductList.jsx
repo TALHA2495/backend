@@ -98,13 +98,27 @@ const ProductList = () => {
                       </div>
                       
                       <div className="flex-1">
-                           {/* Mobile Top Bar */}
+                            {/* Mobile Top Bar */}
                            <div className="lg:hidden bg-white border-b border-gray-200 -mx-4 px-4 py-2 mb-4">
                                 <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-2 mb-4">
-                                    {["Tablets", "Phones", "Ipads", "Ipod", "Accessories"].map((cat, idx) => (
-                                        <button key={idx} className={`px-4 py-1.5 rounded-lg text-sm border whitespace-nowrap ${idx === 0 ? 'bg-blue-50 border-blue-200 text-blue-600 font-medium' : 'bg-gray-100 border-transparent text-gray-600 hover:bg-gray-200'}`}>
-                                            {cat}
-                                        </button>
+                                    {[
+                                        { name: "All", slug: "" },
+                                        { name: "Electronics", slug: "computer-and-tech" },
+                                        { name: "Clothes", slug: "clothes-and-wear" },
+                                        { name: "Home", slug: "home-interiors" },
+                                        { name: "Automobiles", slug: "automobiles" }
+                                    ].map((cat, idx) => (
+                                        <Link 
+                                            key={idx} 
+                                            to={cat.slug ? `/category/${cat.slug}` : "/categories"}
+                                            className={`px-4 py-1.5 rounded-lg text-sm border whitespace-nowrap ${
+                                                (cat.slug === categoryName) || (!cat.slug && !categoryName) 
+                                                ? 'bg-blue-50 border-blue-200 text-blue-600 font-medium' 
+                                                : 'bg-gray-100 border-transparent text-gray-600 hover:bg-gray-200'
+                                            }`}
+                                        >
+                                            {cat.name}
+                                        </Link>
                                     ))}
                                 </div>
                                 <div className="flex items-center justify-between gap-2">
@@ -181,11 +195,24 @@ const ProductList = () => {
                            </div>
 
                            {/* Products */}
-                           <div className={view === 'grid' ? 'grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4' : 'flex flex-col gap-3 md:gap-4'}>
-                                {products.map((product) => (
-                                    <ProductItem key={product._id} product={product} viewType={view} />
-                                ))}
-                           </div>
+                           {products.length > 0 ? (
+                               <div className={view === 'grid' ? 'grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4' : 'flex flex-col gap-3 md:gap-4'}>
+                                    {products.map((product) => (
+                                        <ProductItem key={product._id} product={product} viewType={view} />
+                                    ))}
+                               </div>
+                           ) : (
+                               <div className="bg-white border border-gray-200 rounded-lg p-12 text-center">
+                                   <div className="text-gray-400 mb-4 flex justify-center">
+                                       <Search className="w-12 h-12" />
+                                   </div>
+                                   <h3 className="text-lg font-bold text-gray-900 mb-2">No products found</h3>
+                                   <p className="text-gray-500 mb-6">We couldn't find any products in this category. Try checking other categories.</p>
+                                   <Link to="/categories" className="bg-blue-600 text-white px-6 py-2 rounded-md font-medium hover:bg-blue-700">
+                                       View All Products
+                                   </Link>
+                               </div>
+                           )}
                            
                            {/* You may also like (Mobile) */}
                            <div className="lg:hidden mt-8">
