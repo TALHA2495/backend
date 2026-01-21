@@ -23,12 +23,13 @@ app.get("/", (req, res) => {
 });
 
 
-const PORT = process.env.PORT || 8000;
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 8000;
+  app.listen(PORT, () => {
+    console.log(`App is running on port ${PORT}`);
+  });
+}
 
-
-
-app.listen(PORT, () => {
-  console.log(`App is running on port${PORT}`);
-});
-
+// Export for Vercel serverless
 export default app;
