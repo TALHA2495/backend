@@ -13,7 +13,8 @@ const router = express.Router();
 
 router.use(protect);
 
-router.get("/", getCart);
+router.get("/", (req, res) => res.json({ message: "Cart API is running" }));
+router.get("/all", getCart);
 router.post("/add", addToCart);
 router.post("/sync", syncCart);
 router.put("/update", updateQuantity);
